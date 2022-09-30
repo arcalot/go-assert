@@ -14,14 +14,12 @@ func TestNoError(externalT *testing.T) {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should fail
 		assert.NoError(&internalT1, errors.New("This is an error"))
 	}()
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should not fail
@@ -48,14 +46,12 @@ func TestNoErrorR(externalT *testing.T) {
 	returned1 := false
 	returned2 := false
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should fail
 		returned1 = assert.NoErrorR[bool](&internalT1)(true, errors.New("This is an error"))
 	}()
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should not fail
@@ -88,14 +84,12 @@ func TestContains(externalT *testing.T) {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should fail
 		assert.Contains(&internalT1, "abc", "d")
 	}()
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should not fail
@@ -119,14 +113,12 @@ func TestEqualsStr(externalT *testing.T) {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should fail
 		assert.Equals(&internalT1, "a", "b")
 	}()
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should not fail
@@ -150,14 +142,12 @@ func TestEqualsInt(externalT *testing.T) {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should fail
 		assert.Equals(&internalT1, 1, 2)
 	}()
 
-	//nolint:staticcheck
 	go func() {
 		defer wg.Done()
 		// Should not fail
