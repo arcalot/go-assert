@@ -80,7 +80,7 @@ linters-settings:
     list-type: whitelist
     include-go-root: false
     packages:
-      - go.flow.arcalot.io/assert
+      - go.arcalot.io/assert
   govet:
     enable-all: true
     check-shadowing: false

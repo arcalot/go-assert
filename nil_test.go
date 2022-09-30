@@ -3,7 +3,7 @@ package assert_test
 import (
 	"testing"
 
-	"go.flow.arcalot.io/assert"
+	"go.arcalot.io/assert"
 )
 
 func TestNil(t *testing.T) {
