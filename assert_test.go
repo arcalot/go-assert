@@ -5,7 +5,7 @@ import (
 	"sync"
 	"testing"
 
-	"go.flow.arcalot.io/assert"
+	"go.arcalot.io/assert"
 )
 
 func TestNoError(externalT *testing.T) {

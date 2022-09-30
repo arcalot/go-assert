@@ -1,3 +1,3 @@
-module go.flow.arcalot.io/assert
+module go.arcalot.io/assert
 
 go 1.18
