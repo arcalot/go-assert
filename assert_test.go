@@ -164,3 +164,23 @@ func TestEqualsInt(externalT *testing.T) {
 		externalT.Fatalf("Equals() should not have failed with int, but did.")
 	}
 }
+
+func TestDeepEquals(t *testing.T) {
+	var ab1 = map[string]int{
+		"a": 1,
+		"b": 2,
+	}
+	var ab2 = map[string]int{
+		"a": 1,
+		"b": 2,
+	}
+	var ac = map[string]int{
+		"a": 1,
+		"c": 3,
+	}
+
+	assert.Equals(t, ab1, ab2)
+	testFailure(t, func(t *testing.T) {
+		assert.Equals(t, ab1, ac)
+	})
+}

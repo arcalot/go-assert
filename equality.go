@@ -1,6 +1,7 @@
 package assert
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 )
@@ -17,9 +18,9 @@ func Contains[T ~string, K ~string](t *testing.T, data T, substring K) {
 }
 
 // Contains checks if the specified substring is found in data.
-func Equals[T comparable](t *testing.T, a T, b T) {
+func Equals[T any](t *testing.T, got T, expected T) {
 	t.Helper()
-	if a != b {
-		t.Fatalf("Espected values '%v' and '%v' to match.", a, b)
+	if !reflect.DeepEqual(expected, got) {
+		t.Fatalf("Mismatch, expected: %v, got: %v", expected, got)
 	}
 }
