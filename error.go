@@ -23,3 +23,22 @@ func NoErrorR[T any](t *testing.T) func(T, error) T {
 		return r
 	}
 }
+
+// Error checks if there was an error provided.
+func Error(t *testing.T, err error) {
+	t.Helper()
+	if err == nil {
+		t.Fatalf("No error returned")
+	}
+}
+
+// ErrorR checks if there was an error provided.
+func ErrorR[T any](t *testing.T) func(T, error) {
+	t.Helper()
+	return func(r T, err error) {
+		t.Helper()
+		if err != nil {
+			t.Fatalf("No error returned")
+		}
+	}
+}
