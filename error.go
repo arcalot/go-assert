@@ -37,7 +37,7 @@ func ErrorR[T any](t *testing.T) func(T, error) {
 	t.Helper()
 	return func(r T, err error) {
 		t.Helper()
-		if err != nil {
+		if err == nil {
 			t.Fatalf("No error returned")
 		}
 	}

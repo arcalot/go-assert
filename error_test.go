@@ -56,7 +56,7 @@ func TestNoErrorR(externalT *testing.T) {
 	go func() {
 		defer wg.Done()
 		// Should not fail
-		returned2 = assert.NoErrorR[bool](&internalT1)(true, nil)
+		returned2 = assert.NoErrorR[bool](&internalT2)(true, nil)
 
 	}()
 
@@ -124,7 +124,7 @@ func TestErrorR(externalT *testing.T) {
 	go func() {
 		defer wg.Done()
 		// Should not fail
-		assert.ErrorR[bool](&internalT1)(true, errors.New("This is an error"))
+		assert.ErrorR[bool](&internalT2)(true, errors.New("This is an error"))
 	}()
 
 	wg.Wait()
