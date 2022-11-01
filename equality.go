@@ -17,10 +17,18 @@ func Contains[T ~string, K ~string](t *testing.T, data T, substring K) {
 	}
 }
 
-// Contains checks if the specified substring is found in data.
+// Equals checks if the values are equal (deeply)
 func Equals[T any](t *testing.T, got T, expected T) {
 	t.Helper()
 	if !reflect.DeepEqual(expected, got) {
 		t.Fatalf("Mismatch, expected: %v, got: %v", expected, got)
+	}
+}
+
+// InstanceOf checks if the value got is equal to the type specified.
+func InstanceOf[T any](t *testing.T, got any) {
+	_, ok := got.(T)
+	if !ok {
+		t.Fatalf("InstanceOf assertion failed. %v is instance of %T", got, got)
 	}
 }
