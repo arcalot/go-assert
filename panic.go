@@ -15,7 +15,7 @@ func Panics(t *testing.T, functionToTest func()) {
 	functionToTest()
 }
 
-// Panics asserts that the function causes a panic.
+// NoPanic asserts that the function does not cause a panic.
 func NoPanic(t *testing.T, functionToTest func()) {
 	defer func() {
 		// This defered function will recover it if it panics
