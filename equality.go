@@ -17,7 +17,7 @@ func Contains[T ~string, K ~string](t *testing.T, data T, substring K) {
 	}
 }
 
-// Equals checks if the values are equal (deeply).
+// Equals checks if the values are equal (deeply)
 func Equals[T any](t *testing.T, got T, expected T) {
 	t.Helper()
 	if !reflect.DeepEqual(expected, got) {
