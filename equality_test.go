@@ -113,3 +113,39 @@ func TestDeepEquals(t *testing.T) {
 		assert.Equals(t, ab1, ac)
 	})
 }
+
+type TestStructA struct {
+	a int
+}
+
+func TestInstanceOf(t *testing.T) {
+	var isInt any = 1
+	var isFloat any = 1.0
+	var isTestStructA any = TestStructA{1}
+	var isTestStructAPtr any = &TestStructA{1}
+
+	assert.InstanceOf[int](t, isInt)
+	assert.InstanceOf[float64](t, isFloat)
+	assert.InstanceOf[TestStructA](t, isTestStructA)
+	assert.InstanceOf[*TestStructA](t, isTestStructAPtr)
+	assert.InstanceOf[any](t, isTestStructAPtr)
+
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[float64](t, isInt)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[int](t, isFloat)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[TestStructA](t, isTestStructAPtr)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[*TestStructA](t, isTestStructA)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[int](t, isTestStructA)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.InstanceOf[int](t, isTestStructAPtr)
+	})
+}
