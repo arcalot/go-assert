@@ -20,7 +20,7 @@ func NoPanic(t *testing.T, functionToTest func()) {
 	defer func() {
 		// This defered function will recover it if it panics
 		if r := recover(); r != nil {
-			t.Fatalf("Expected function to not panic, but it did.")
+			t.Fatalf("Expected function to not panic, but it did. Panic output: %v", r)
 		}
 	}()
 
