@@ -3,6 +3,7 @@ package assert
 import "testing"
 
 // Panics asserts that the function causes a panic.
+// Does not detect panics in separate goroutines.
 func Panics(t *testing.T, functionToTest func()) {
 	defer func() {
 		// This defered function will recover it if it panics
@@ -16,6 +17,7 @@ func Panics(t *testing.T, functionToTest func()) {
 }
 
 // NoPanic asserts that the function does not cause a panic.
+// Does not detect panics in separate goroutines.
 func NoPanic(t *testing.T, functionToTest func()) {
 	defer func() {
 		// This defered function will recover it if it panics
