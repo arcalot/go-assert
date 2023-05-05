@@ -29,7 +29,7 @@ func Equals[T any](t *testing.T, got T, expected T) {
 func InstanceOf[T any](t *testing.T, got any) {
 	_, ok := got.(T)
 	if !ok {
-		//nolint:gocritic
+		//nolint
 		t.Fatalf("Bad instance. Tested value %v is instance of %T, not %T", got, got, *new(T))
 	}
 }
