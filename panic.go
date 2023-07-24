@@ -6,7 +6,7 @@ import "testing"
 // Does not detect panics in separate goroutines.
 func Panics(t *testing.T, functionToTest func()) {
 	defer func() {
-		// This defered function will recover it if it panics
+		// This deferred function will recover it if it panics
 		if r := recover(); r == nil {
 			t.Fatalf("Expected function to panic, but it didn't.")
 		}
@@ -20,7 +20,7 @@ func Panics(t *testing.T, functionToTest func()) {
 // Does not detect panics in separate goroutines.
 func NoPanic(t *testing.T, functionToTest func()) {
 	defer func() {
-		// This defered function will recover it if it panics
+		// This deferred function will recover it if it panics
 		if r := recover(); r != nil {
 			t.Fatalf("Expected function to not panic, but it did. Panic output: %v", r)
 		}
