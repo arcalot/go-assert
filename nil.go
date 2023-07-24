@@ -22,3 +22,12 @@ func NotNil(t *testing.T, value any) {
 		t.Fatalf("Unexpected nil value")
 	}
 }
+
+// NotNilR asserts that the input is not nil, and returns it.
+func NotNilR[T any](t *testing.T, value T) T {
+	t.Helper()
+	if reflect.ValueOf(value).IsNil() {
+		t.Fatalf("Unexpected nil value")
+	}
+	return value
+}
