@@ -118,13 +118,13 @@ func TestErrorR(externalT *testing.T) {
 	go func() {
 		defer wg.Done()
 		// Should fail
-		assert.ErrorR[bool](&internalT1)(true, nil)
+		assert.ErrorR(&internalT1)(true, nil)
 	}()
 
 	go func() {
 		defer wg.Done()
 		// Should not fail
-		assert.ErrorR[bool](&internalT2)(true, errors.New("This is an error"))
+		assert.ErrorR(&internalT2)(true, errors.New("This is an error"))
 	}()
 
 	wg.Wait()
