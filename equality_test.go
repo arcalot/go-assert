@@ -186,7 +186,6 @@ func TestLessThan(t *testing.T) {
 	})
 }
 
-
 func TestGreaterThanEq(t *testing.T) {
 	assert.GreaterThanEq(t, 1, 1)
 	assert.GreaterThanEq(t, 6, 5)
