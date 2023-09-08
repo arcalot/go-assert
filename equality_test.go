@@ -149,3 +149,74 @@ func TestInstanceOf(t *testing.T) {
 		assert.InstanceOf[int](t, isTestStructAPtr)
 	})
 }
+
+func TestGreaterThan(t *testing.T) {
+	assert.GreaterThan(t, 6, 5)
+	assert.GreaterThan(t, 60000000, 0)
+	assert.GreaterThan(t, 6, -5)
+	assert.GreaterThan(t, 6.0, 5.0)
+	assert.GreaterThan(t, "b", "a")
+
+	testFailure(t, func(t *testing.T) {
+		assert.GreaterThan(t, 0, 0)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.GreaterThan(t, 5, 6)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.GreaterThan(t, "a", "b")
+	})
+}
+
+func TestLessThan(t *testing.T) {
+	assert.LessThan(t, 5, 6)
+	assert.LessThan(t, 0, 6000000)
+	assert.LessThan(t, -5, 6)
+	assert.LessThan(t, 5.0, 6.0)
+	assert.LessThan(t, "a", "b")
+
+	testFailure(t, func(t *testing.T) {
+		assert.LessThan(t, 0, 0)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.LessThan(t, 6, 5)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.LessThan(t, "b", "a")
+	})
+}
+
+
+func TestGreaterThanEq(t *testing.T) {
+	assert.GreaterThanEq(t, 1, 1)
+	assert.GreaterThanEq(t, 6, 5)
+	assert.GreaterThanEq(t, 60000000, 0)
+	assert.GreaterThanEq(t, 6, -5)
+	assert.GreaterThanEq(t, 6.0, 5.0)
+	assert.GreaterThanEq(t, "b", "a")
+	assert.GreaterThanEq(t, "a", "a")
+
+	testFailure(t, func(t *testing.T) {
+		assert.GreaterThanEq(t, 5, 6)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.GreaterThanEq(t, "a", "b")
+	})
+}
+
+func TestLessThanEq(t *testing.T) {
+	assert.LessThanEq(t, 5, 6)
+	assert.LessThanEq(t, 0, 6000000)
+	assert.LessThanEq(t, -5, 6)
+	assert.LessThanEq(t, 5.0, 6.0)
+	assert.LessThanEq(t, "a", "b")
+	assert.LessThanEq(t, "a", "a")
+	assert.LessThanEq(t, 0, 0)
+
+	testFailure(t, func(t *testing.T) {
+		assert.LessThanEq(t, 6, 5)
+	})
+	testFailure(t, func(t *testing.T) {
+		assert.LessThanEq(t, "b", "a")
+	})
+}
