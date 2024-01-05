@@ -7,16 +7,13 @@ import (
 	"go.arcalot.io/assert"
 )
 
-type TestInterface interface {
-}
-
 func TestNil(t *testing.T) {
 	type testStruct struct{}
 	var pointerVal *testStruct = nil
 	var mapVal map[any]any = nil
 	var chanVal chan int = nil
 	var funcVal func() int = nil
-	var interfaceVal TestInterface = nil
+	var interfaceVal any = nil
 	var sliceVal []int = nil
 	var unsafePointerVal unsafe.Pointer = nil
 	assert.Nil(t, nil)
@@ -44,7 +41,7 @@ func TestNil(t *testing.T) {
 		assert.Nil(t, func() {}) // function
 	})
 	testFailure(t, func(t *testing.T) {
-		var test TestInterface = "test"
+		var test any = "test"
 		assert.Nil(t, test) // interface
 	})
 	testFailure(t, func(t *testing.T) {
