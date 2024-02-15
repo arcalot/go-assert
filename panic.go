@@ -6,7 +6,7 @@ import "testing"
 // Does not detect panics in separate goroutines.
 func Panics(t *testing.T, functionToTest func()) {
 	defer func() {
-		// This deferred function will capture the panic if it panics
+		// This deferred function will capture the panic (if present) from the function under test.
 		if r := recover(); r == nil {
 			t.Fatalf("Expected function to panic, but it didn't.")
 		}
@@ -22,7 +22,7 @@ func Panics(t *testing.T, functionToTest func()) {
 // Does not detect panics in separate goroutines.
 func PanicsContains(t *testing.T, functionToTest func(), expectedErrMsg string) {
 	defer func() {
-		// This deferred function will capture the panic if it panics
+		// This deferred function will capture the panic (if present) from the function under test.
 		r := recover()
 		if r == nil {
 			t.Fatalf("Expected function to panic, but it didn't.")
@@ -51,7 +51,7 @@ func PanicsWithValidation(
 	validationFunction func(*testing.T, any),
 ) {
 	defer func() {
-		// This deferred function will capture the panic if it panics
+		// This deferred function will capture the panic (if present) from the function under test.
 		r := recover()
 		if r == nil {
 			t.Fatalf("Expected function to panic, but it didn't.")
@@ -67,7 +67,7 @@ func PanicsWithValidation(
 // Does not detect panics in separate goroutines.
 func NoPanic(t *testing.T, functionToTest func()) {
 	defer func() {
-		// This deferred function will capture the panic if it panics
+		// This deferred function will capture the panic (if present) from the function under test.
 		if r := recover(); r != nil {
 			t.Fatalf("Expected function to not panic, but it did. Panic output: %v", r)
 		}
