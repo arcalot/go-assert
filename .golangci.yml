@@ -77,10 +77,12 @@ linters-settings:
   revive:
     severity: error
   depguard:
-    list-type: whitelist
-    include-go-root: false
-    packages:
-      - go.arcalot.io/assert
+    rules:
+      main:
+        list-mode: strict
+        allow:
+          - $gostd
+          - go.arcalot.io/assert
   govet:
     enable-all: true
     check-shadowing: false
