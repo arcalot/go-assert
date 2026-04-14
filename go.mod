@@ -1,3 +1,3 @@
 module go.arcalot.io/assert
 
-go 1.21
+go 1.25
