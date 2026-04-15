@@ -64,17 +64,14 @@ linters:
     - testpackage
 
     # endregion
+  settings:
+    govet:
+      enable-all: true
+      disable:
+        # We don't care about variable shadowing.
+        - shadow
+        - fieldalignment
 formatters:
   enable:
     # Make code properly formatted.
     - gofmt
-linters-settings:
-  govet:
-    enable-all: true
-    disable:
-      # We don't care about variable shadowing.
-      - shadow
-      - fieldalignment
-  stylecheck:
-    checks:
-      - all
